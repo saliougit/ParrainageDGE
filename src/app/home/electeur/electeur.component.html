@@ -4,51 +4,25 @@
       <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
         <div class="col-span-12 lg:col-span-8 xl:col-span-9">
           
-          <div class="flex items-center justify-between py-5">
+          <div class="flex flex-col items-start justify-between py-5">
             <h3 class="text-2xl font-medium text-slate-800 dark:text-navy-50 mt-2 mb-2">
               Liste des electeurs
             </h3>
+
+            <app-table
+              [electeurs]="electeurs"
+              [headers]="headers"
+            >
+            </app-table>
+
           </div>
-  
-          <!-- filtre plans  -->
-          <div class="is-scrollbar-hidden">
-            <div class="flex w-max space-x-3">
-              <!-- <a class="tag   rounded-full  text-xs+ text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90" style="background-color:  #006B88">
-                🔥 Tous les plans
-              </a>
-  
-              <a  class="tag rounded-full bg-slate-150 text-xs+ text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-700 dark:text-navy-100 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                <i class="fa-solid fa-notes-medical mr-1 " style="color : #006B88"></i> Santés 
-              </a>
-              <a  class="tag rounded-full bg-slate-150 text-xs+ text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-700 dark:text-navy-100 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                <i class="fa-solid fa-car mr-1 " style="color :  #006B88"></i> Automobiles
-              </a>
-              <a  class="tag  rounded-full bg-slate-150 text-xs+ text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-700 dark:text-navy-100 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                <i class="fa-solid fa-globe mr-1" style="color :  #006B88" ></i> Voyages
-              </a>
-              <a  class="tag  rounded-full bg-slate-150 text-xs+ text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-700 dark:text-navy-100 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90">
-                <i class="fa-solid fa-house-user mr-1"  style="color :  #006B88" ></i> Habitats
-              </a> -->
-            
-            </div>
-          </div>
-          
           <div class="flex mt-4 sm:mt-5 lg:mt-2 gap-2  lg:gap-4 sm:gap-5  overflow-y-auto overflow-hidden" style="min-width: 65rem; height:25rem">
           
             
-          </div>
-  
-  
-          <!-- For tab  -->
-          <!-- <app-table
-            
-          >
-          </app-table> -->
-  
-        
+          </div>        
         </div>
         
-        <div class="col-span-12 space-y-4 sm:space-y-5 lg:col-span-4 lg:mt-6 lg:space-y-6 xl:col-span-3">
+        <div class="col-span-12 space-y-4 ml-10 sm:space-y-5 lg:col-span-4 lg:mt-6 lg:space-y-6 xl:col-span-3">
           
             <!-- Commission  -->
   
@@ -81,6 +55,8 @@
             </button>
           </div>
         </div>  
+
+        
       </div>
       
       @if (isOpenDrawer) {
