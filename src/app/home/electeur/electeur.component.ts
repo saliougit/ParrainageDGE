@@ -51,7 +51,7 @@ export class ElecteurComponent implements OnInit {
     this.isOpenDrawer = true;
   }
 
-  onCloseForm(){
+  onCloseDrawer(){
     this.isOpenDrawer = !this.isOpenDrawer;
   }
 

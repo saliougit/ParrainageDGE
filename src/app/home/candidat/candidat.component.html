@@ -1,1 +1,133 @@
-<p>candidat works!</p>
+<div class="header-container flex w-full dark:bg-navy-750" style="background:none">
+    <main class="main-content w-full px-[var(--margin-x)] pb-8">
+        <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
+            <div class="col-span-12 lg:col-span-8 xl:col-span-9">
+
+                <div class="flex flex-col items-start justify-between py-5">
+                    <h3 class="text-2xl font-medium text-slate-800 dark:text-navy-50 mt-2 mb-6">
+                        Liste des Candidats
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Boucle sur les candidats -->
+                        @for (candidat of candidats ; track candidat){
+                        <div class="card group p-3 mr-4 mb-4" style="width: 20rem;">
+                            <div class="flex items-center justify-between space-x-2 px-1">
+                                <div class="flex items-center justify-between space-x-2">
+
+                                  <div class="flex items-center justify-between space-x-1">
+                                      <div class="h-5 w-5 flex justify-center items-center rounded-full"
+                                        style="background : #006B88">
+                                    </div>
+
+                                    <div class="h-5 w-5 flex justify-center items-center rounded-full"
+                                        style="background : #006B88">
+                                    </div>
+
+                                    <div class="h-5 w-5 flex justify-center items-center rounded-full"
+                                        style="background : #006B88">
+                                    </div>
+                                  </div>
+
+                                    <div>
+                                        <a href="#"
+                                            class="font-medium text-slate-600 line-clamp-1 dark:text-navy-100">{{ candidat.nompartie | uppercase }}</a>
+                                        <!-- <p class="text-xs text-black text-primary dark:text-accent-light">
+                                            10 ventes
+                                        </p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative mt-4 flex items-center justify-center h-40 w-full border-t">
+                                <img class="rounded-b-lg h-full object-cover" src="../../../assets/images/candidat.png"
+                                    alt="image">
+                                <div
+                                    class="absolute top-0 h-full w-full rounded-b-lg  bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                </div>
+                                <div
+                                    class="absolute top-0 flex h-full w-full items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <button
+                                     (click)="openDrawer(2, candidat)"
+                                     class="btn min-w-[7rem] border border-white/10 bg-white/20 text-white backdrop-blur hover:bg-white/30 focus:bg-white/30">
+                                        Detail
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-3 px-1">
+                                <a href="#"
+                                    class="text-base font-medium text-slate-700 line-clamp-1 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light">
+                                    {{ candidat.slogan }}
+                                </a>
+                                <div class="my-3 h-px bg-slate-200 dark:bg-navy-500"></div>
+                                <div class="flex justify-between">
+                                    <div>
+                                        <p class="text-xs text-slate-400 dark:text-navy-300">
+                                           {{ candidat?.prenom}} {{candidat.nom}} 
+                                        </p>
+                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    
+                        <!-- Fin de la boucle -->
+                    </div>
+
+                </div>
+
+                <div class="flex mt-4 sm:mt-5 lg:mt-2 gap-2  lg:gap-4 sm:gap-5  overflow-y-auto overflow-hidden"
+                    style="min-width: 65rem; height:25rem">
+
+
+                </div>
+            </div>
+
+            <div class="col-span-12 space-y-4 ml-10 sm:space-y-5 lg:col-span-4 lg:mt-6 lg:space-y-6 xl:col-span-3">
+                <div class="card bg-gradient-to-br from-purple-500 to-indigo-600 px-4 pb-4 bg-blue-300">
+                    <div class="mt-3 flex items-center justify-between text-white">
+                        <div x-data="usePopper({placement:'bottom-end',offset:4})" class="inline-flex">
+                            <button x-ref="popperRef"
+                                class="btn -mr-1.5 h-8 w-8 rounded-full p-0 hover:bg-white/20 focus:bg-white/20 active:bg-white/25">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-2xl font-semibold text-white">
+                        Nombre de Candidats
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="font-bold text-xl text-white"> {{getNbCandidats()}} candidats</span>
+                    </div>
+
+                    <button (click)="openDrawer(1)"
+                        class="btn mt-6 w-full border border-white/10 bg-white/20 text-white hover:bg-white/30 focus:bg-white/30">
+                        Ajouter un candidat
+                    </button>
+                </div>
+            </div>
+
+        </div>
+<!-- 
+        <app-drawer (onCloseForm)="onCloseDrawer()">
+           
+
+          </app-drawer> -->
+          
+          
+        @if (isOpenDrawer) {
+            @if (drawerContent === 1) {
+                <app-drawer (onCloseForm)="onCloseDrawer()" [aAfficher]="1">
+                </app-drawer>
+            }@else {
+                <app-drawer (onCloseForm)="onCloseDrawer()" [aAfficher]="2" [candidat]="selectedCandidate">
+                </app-drawer>
+            }
+        }
+    </main>
+</div>

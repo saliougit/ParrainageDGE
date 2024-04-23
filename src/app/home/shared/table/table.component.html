@@ -19,13 +19,18 @@
       <!-- Corps -->
       <tbody class="bg-white divide-y divide-gray-200">
 
-        @for (row of electeurs; track row.id) {
+        @for (row of data; track row.id) {
             <ng-container>
               <tr>
                 @for (header of headers ; track header) {
                     <ng-container>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        {{row[header] }}
+                        @if(header == "datenaissance"){
+                          {{row[header] | date : "dd MMMM yyy" }}
+
+                        }@else {
+                          {{row[header]}}                         
+                        }
                       </td>
                     </ng-container>
                 }

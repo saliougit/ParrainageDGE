@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 
@@ -6,6 +7,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-table',
   standalone: true,
   imports: [
+    CommonModule
   ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
@@ -13,7 +15,7 @@ import { Component, Input } from '@angular/core';
 export class TableComponent {
 
   @Input() headers : string[] = [];
-  @Input() electeurs : any[] = [];
+  @Input() data : any[] = [];
 
   
   

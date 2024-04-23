@@ -12,9 +12,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <!-- Texte "Upload du fichier électoral" -->
-            <!-- <h2 class="text-xl font-semibold text-gray-800  mx-4 mt-20">Upload du fichier électoral</h2> -->
-            <div class="flex flex-col w-full h-full justify-center bg-white items-center p-4">
+
+                <div class="flex flex-col w-full h-full justify-center bg-white items-center p-4">
                 <!-- Section pour glisser-déposer le fichier -->
                 <div class="border-2 border-dashed border-gray-300 p-8 w-full h-1/2 rounded-lg mb-4 flex flex-col items-center justify-center cursor-pointer" 
                      (drop)="onFileDrop($event)" 
@@ -52,13 +51,13 @@
                            class="border border-gray-300 rounded-md px-6 py-4 flex-1 mr-2" 
                            />
                     <button 
-                    (click)="send()"
+                    (click)="uploadFile()"
                     [disabled]="!selectedFile"
                     class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-6 rounded flex-2">
                         Valider checksum
                     </button>
                 </div>
-            </div>
+                </div>
         </div>
     </div>  
 </div>
