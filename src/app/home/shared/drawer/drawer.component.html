@@ -1,0 +1,63 @@
+<div>
+    <div class="fixed inset-0 z-[150] bg-slate-900/60 transition-opacity duration-200">
+    </div>
+  
+    <div class="fixed right-0 top-0 z-[151] h-full w-full" style="width:40rem">
+        <div class="flex overflow-y-auto justify-between h-full w-full transform-gpu flex-col bg-white transition-transform duration-200 dark:bg-navy-750">
+            <!-- Bouton de fermeture en haut à gauche -->
+            <button 
+                (click)="closeForm()"
+                class="absolute top-0 left-0 m-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+                <div class="flex flex-col w-full h-full justify-center bg-white items-center p-4">
+                <!-- Section pour glisser-déposer le fichier -->
+                <div class="border-2 border-dashed border-gray-300 p-8 w-full h-1/2 rounded-lg mb-4 flex flex-col items-center justify-center cursor-pointer" 
+                     (drop)="onFileDrop($event)" 
+                     (dragover)="onDragOver($event)">
+                    <p>Glissez et déposez le fichier ici</p>
+                    <p>ou</p>
+                    <input type="file" class="hidden" (change)="onFileSelected($event)" />
+                   
+                    <div>
+                        <!-- Autres élémentsformulaire -->
+                        <label for="fileInput" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-14 rounded cursor-pointer">
+                            Upload
+                        </label>
+                        <input id="fileInput" type="file" (change)="onFileSelected($event)" style="display: none;">
+                        <!-- Autres éléments  formulaire -->
+                    </div>
+
+                    @if(!errorMessage){
+                        <div id="selectedFileName" class="mt-4 text-bold"></div>
+
+                    }
+                    @if (errorMessage) {
+                        <div class="text-red-500  mt-4">{{ errorMessage }}</div>  
+                    }
+
+
+                    
+                </div>
+                <!-- Champ de texte et bouton pour valider le checksum -->
+                <div class="flex items-center w-full justify-center">
+                    <input type="text" 
+                            [(ngModel)]="checksum"
+                            required
+                           placeholder="Entrez le checksum ici" 
+                           class="border border-gray-300 rounded-md px-6 py-4 flex-1 mr-2" 
+                           />
+                    <button 
+                    (click)="uploadFile()"
+                    [disabled]="!selectedFile"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-6 rounded flex-2">
+                        Valider checksum
+                    </button>
+                </div>
+                </div>
+        </div>
+    </div>  
+</div>

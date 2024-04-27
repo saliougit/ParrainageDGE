@@ -1,6 +1,7 @@
 import { CommonModule, formatPercent } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -21,7 +22,7 @@ export class LoginComponent {
   });
   
   constructor(
-    // private router : Router,
+    private router : Router,
     // private dataService : DataService
   ){}
 
@@ -31,6 +32,8 @@ export class LoginComponent {
 
     onSubmit(){
       console.log(this.userForm.value);
+      this.router.navigate(['/home']);
+      
     // this.login(this.userForm.value);
   }
 
